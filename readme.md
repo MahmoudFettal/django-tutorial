@@ -5,6 +5,7 @@ In this step we are going to use generic views to implements our APIs, we are go
 
 The different views allow us to implement different types of HTTP requests.
 
+## **Generic Views:**
 All the generic views that we are going to use in this tutorial are from `rest_framework.generics` and we are going to inherit from them to implemet them for our views.
 
 ### **- CreateAPIView**
