@@ -49,11 +49,20 @@ class ShoppingCart(models.Model):
             amount += item.quantity * item.product.price
         return round(amount, 2)
 
+    def cart_items(self):
+        shoppingCartItems = ShoppingCartItem.objects.filter(shopping_cart_id = self.id)
+        items_list = []
+
+        for item in shoppingCartItems:
+            items_list.append(item.product.name)
+
+        return items_list
+    
     def taxes(self):
         return round(self.TAX_RATE * self.subtotal(), 2)
 
     def total(self):
-        return round(self.subtotal() * self.taxes(), 2)
+        return round(self.subtotal() + self.taxes(), 2)
  
     def __str__(self):
         return str(self.id) + "-" +self.name

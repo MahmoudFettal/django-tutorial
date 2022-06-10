@@ -1,3 +1,4 @@
+from xml.etree.ElementInclude import include
 from rest_framework import serializers
 
 from .models import *
@@ -22,5 +23,6 @@ class ShoppingCartSerializer(serializers.ModelSerializer):
         data["amount"] = instance.subtotal()
         data["after_tax"] = instance.taxes()
         data["total"] = instance.total()
+        data["items"] = instance.cart_items()
         
         return data

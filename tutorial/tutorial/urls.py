@@ -18,9 +18,17 @@ from django.urls import path
 from store.api_views import *
 
 urlpatterns = [
+    # products APIs
     path('api/products/', ProductsList.as_view()),
-    path('api/product/create', ProductCreateView.as_view()),
+    path('api/products/create', ProductCreateView.as_view()),
+    path('api/products/<int:id>', ProductView.as_view()),
+    # products APIs
     path('api/shoppingcarts/', ShoppingCartList.as_view()),
-    path('api/shoppingcart/<int:id>', ProductView.as_view()),
+    path('api/shoppingcarts/create', ShoppingCartCreateView.as_view()),
+    path('api/shoppingcarts/<int:id>', ShoppingCartView.as_view()),
+    # products APIs
+    path('api/shoppingcartitems/', ShoppingCartItemsList.as_view()),
+    path('api/shoppingcartitems/create', ShoppingCartItemCreateView.as_view()),
+    path('api/shoppingcartitems/<int:id>', ShoppingCartItemView.as_view()),
     path('admin/', admin.site.urls),
 ]
